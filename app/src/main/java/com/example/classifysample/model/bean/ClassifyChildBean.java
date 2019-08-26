@@ -38,6 +38,7 @@ public class ClassifyChildBean {
         this.result = result;
     }
 
+
     public static class ResultBean {
         /**
          * id : 1001002001
@@ -65,7 +66,7 @@ public class ClassifyChildBean {
 
         @Override
         public String toString() {
-            return "ResultBean{" +
+            return "ClassifyResultBean{" +
                     "id='" + id + '\'' +
                     ", name='" + name + '\'' +
                     '}';

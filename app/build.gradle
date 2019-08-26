@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+
+//2、在app下的 build。gradle中配置 插件
+apply plugin: 'org.greenrobot.greendao' // apply plugin
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -27,6 +31,14 @@ configurations.all {
         }
     }
 }
+
+//4、在app下的 build.grale下配置生成目录
+greendao {
+    schemaVersion 1 //数据库版本号
+    daoPackage 'com.example.classifysample.dao' //设置时生成代码的目录
+    targetGenDir 'src/main/java' //设置DaoMaster、DaoSession、Dao目录
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -61,8 +73,8 @@ dependencies {
     //让retrofit支持Rxjava2
     implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
 
-    //greenDao需要
-//    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    //3、在app下的build.gradle 添加greenDao依赖
+   implementation 'org.greenrobot:greendao:3.2.2' // add library
 
     //xrecyclerView需要
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'

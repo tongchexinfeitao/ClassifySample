@@ -13,8 +13,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ClassifyPresenter extends BasePresenter<IClassifyContract.IView> implements IClassifyContract.IPresenter {
 
+    Disposable mDisposable;
+
     @Override
     public void getParentClassify() {
+
         ClassifyModel classifyModel = new ClassifyModel();
         classifyModel.getParentClassify()
                 .subscribeOn(Schedulers.io())
@@ -49,6 +52,9 @@ public class ClassifyPresenter extends BasePresenter<IClassifyContract.IView> im
 
     @Override
     public void getChildClassify(String getChildClassify) {
+        if (mDisposable != null && !mDisposable.isDisposed()) {
+            mDisposable.dispose();
+        }
         ClassifyModel classifyModel = new ClassifyModel();
         classifyModel.getChildClassify(getChildClassify)
                 .subscribeOn(Schedulers.io())
@@ -56,7 +62,7 @@ public class ClassifyPresenter extends BasePresenter<IClassifyContract.IView> im
                 .subscribe(new Observer<ClassifyChildBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        mDisposable = d;
                     }
 
                     @Override

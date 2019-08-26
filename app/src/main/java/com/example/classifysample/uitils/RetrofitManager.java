@@ -1,5 +1,9 @@
 package com.example.classifysample.uitils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -44,5 +48,16 @@ public class RetrofitManager {
 
     public <T> T create(final Class<T> service) {
         return mRetrofit.create(service);
+    }
+
+
+    public static boolean hasNet(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

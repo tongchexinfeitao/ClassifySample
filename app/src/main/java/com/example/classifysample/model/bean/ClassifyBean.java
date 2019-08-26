@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ClassifyBean {
 
+
     /**
      * result : [{"id":"1001002","name":"女装"},{"id":"1001003","name":"男鞋"},{"id":"1001004","name":"女鞋"},{"id":"1001007","name":"美妆护肤"},{"id":"1001008","name":"手机数码"},{"id":"1001005","name":"箱包手袋"}]
      * message : 查询成功
@@ -38,6 +39,7 @@ public class ClassifyBean {
         this.result = result;
     }
 
+
     public static class ResultBean {
         /**
          * id : 1001002
@@ -62,22 +64,5 @@ public class ClassifyBean {
         public void setName(String name) {
             this.name = name;
         }
-
-        @Override
-        public String toString() {
-            return "ResultBean{" +
-                    "id='" + id + '\'' +
-                    ", name='" + name + '\'' +
-                    '}';
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "ClassifyBean{" +
-                "message='" + message + '\'' +
-                ", status='" + status + '\'' +
-                ", result=" + result +
-                '}';
     }
 }
